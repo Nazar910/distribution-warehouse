@@ -3,7 +3,6 @@ import React from 'react';
 const SubmitButton = React.createClass({
 	componentDidMount() {
 		this.props.onEditChange();
-		console.log('Submit did mount');
 	},
 	render(){
 		return(

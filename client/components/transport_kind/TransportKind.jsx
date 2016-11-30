@@ -1,17 +1,15 @@
 import React from 'react';
 import '../Item.less';
 
-const Client = React.createClass({
+const TransportKind = React.createClass({
 	render(){
 		return(		
 					<tr className="Item">
 						<td>{this.props.id}</td>
-						<td>{this.props.lastName}</td>
 						<td>{this.props.name}</td>
-						<td>{this.props.pob}</td>
-						<td>{this.props.rasch_sch}</td>
-						<td>{this.props.mfo}</td>
-						<td>{this.props.address}</td>
+						<td>{this.props.name_p2}</td>
+						<td>{this.props.name_p3}</td>
+						<td>{this.props.name_p4}</td>
 						<td><span className='Item__del-edit' onClick={this.props.onEdit}>Edit</span></td>
 						<td><span className='Item__del-edit' onClick={this.props.onDelete}> x </span></td>
 					</tr>
@@ -19,4 +17,4 @@ const Client = React.createClass({
 	}
 });
 
-export default Client;
+export default TransportKind;

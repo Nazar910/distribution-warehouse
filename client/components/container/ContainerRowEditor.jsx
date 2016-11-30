@@ -5,48 +5,48 @@ import '../Editor.less';
 
 function getState(){
 	return {
-			name: '',
-			Npreisk: 1,
-			cost: 1
+			name:'',
+			factory:'',
+			cost:0
 		}	
 }
-const ProductRowEditor = React.createClass({
+const ContainerRowEditor = React.createClass({
 	getInitialState() {
 		return getState();
 	},
 	handleNameChange(event){
 		this.setState({ name: event.target.value });
 	},
-	handleNpreiskChange(event){
-		this.setState({ Npreisk: event.target.value });
+	handleFactoryChange(event){
+		this.setState({ factory: event.target.value });
 	},
 	handleCostChange(event){
 		this.setState({ cost: event.target.value });
 	},
-	handleProductAdd(){
-		const newProduct = {
-			name: this.state.name,
-			Npreisk: this.state.Npreisk,
-			cost: this.state.cost
+	handleContainerAdd(){
+		const newContainer = {
+			name:this.state.name,
+			factory:this.state.factory,
+			cost:this.state.cost
 		};
-		this.props.onProductAdd(newProduct);
+		this.props.onContainerAdd(newContainer);
 		this.setState(getState());
 	},
-	handleProductUpdate(){
-		const updatedProduct = {
-			id: this.props.product.id,
-			name: this.state.name,
-			Npreisk: this.state.Npreisk,
-			cost: this.state.cost
+	handleContainerUpdate(){
+		const updatedContainer = {
+			id: this.props.container.id,
+			name:this.state.name,
+			factory:this.state.factory,
+			cost:this.state.cost
 		};
-		this.props.onProductUpdate(updatedProduct);
+		this.props.onContainerUpdate(updatedContainer);
 		this.setState(getState);
 	},
 	handleInputs(){
 		this.setState({
-				name: this.props.product.name,
-				Npreisk: this.props.product.Npreisk,
-				cost: this.props.product.cost
+				name:this.props.container.name,
+				factory:this.props.container.factory,
+				cost:this.props.container.cost
 			});
 	},
 	clearInputs(){
@@ -62,11 +62,10 @@ const ProductRowEditor = React.createClass({
 						onChange={this.handleNameChange}
 					/>
 					<input
-						type="number"
-						placeholder="Npreisk"
-						value={this.state.Npreisk}
-						min="1"
-						onChange={this.handleNpreiskChange}
+						type="text"
+						placeholder="factory"
+						value={this.state.factory}
+						onChange={this.handleFactoryChange}
 					/>
 					<input
 						type="number"
@@ -78,12 +77,12 @@ const ProductRowEditor = React.createClass({
 					{!this.props.shouldEdit ?
 					<AddButton 
 						disabled={!this.state.name}
-						handleAdd={this.handleProductAdd}
+						handleAdd={this.handleContainerAdd}
 						clear={this.clearInputs}
 					/> :
                     <SubmitButton 
                      	onEditChange={this.handleInputs}
-                     	onSubmit={this.handleProductUpdate}
+                     	onSubmit={this.handleContainerUpdate}
                     />
                     }
                     <div>{this.props.error}</div>
@@ -92,4 +91,4 @@ const ProductRowEditor = React.createClass({
 	}
 });
 
-export default ProductRowEditor;
+export default ContainerRowEditor;

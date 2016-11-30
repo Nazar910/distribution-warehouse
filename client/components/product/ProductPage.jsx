@@ -3,7 +3,6 @@ import ProductRowEditor from './ProductRowEditor.jsx';
 import ProductList from './ProductList.jsx';
 import Store from '../../stores/Store.jsx';
 import AppActions from '../../actions/AppActions';
-import { Router, Route, hashHistory, Link } from 'react-router';
 
 function getStateFromFlux(){
 	return {
@@ -22,15 +21,12 @@ const ProductPage = React.createClass({
 	componentWillMount() {
         AppActions.loadProducts();
     },
-
     componentDidMount() {
         Store.addChangeListener(this._onChange);
     },
-
     componentWillUnmount() {
         Store.removeChangeListener(this._onChange);
     },
-
    	handleProductAdd(productData){
    		AppActions.createProduct(productData);
    	},
@@ -43,21 +39,19 @@ const ProductPage = React.createClass({
    	errorStr(str){
    		this.setState({ errors: str });
    	},
-   	handleproductUpdate(productData){
+   	handleProductUpdate(productData){
    		AppActions.updateProduct(productData,this.errorStr);
    		if(!this.state.errors)
    			this.setState(getStateFromFlux());
    	},
-   	
 	render(){
 		return(
 				<div>
-					{this.state.edit}
 					<ProductRowEditor 
 					 onProductAdd={this.handleProductAdd} 
 					 shouldEdit={this.state.edit}
 					 product={this.state.product}
-					 onProductUpdate={this.handleproductUpdate}
+					 onProductUpdate={this.handleProductUpdate}
 					 error={this.state.errors}
 					/>
 					<ProductList

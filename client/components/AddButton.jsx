@@ -3,7 +3,6 @@ import React from 'react';
 const AddButton = React.createClass({
 	componentDidMount() {
 		this.props.clear();
-		console.log('Add button did mount');
 	},
 	render(){
 		return(

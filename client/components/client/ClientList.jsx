@@ -1,34 +1,38 @@
 import React from 'react';
 import Client from './Client.jsx';
+import '../List.less';
 
-const name = 'Ім\'я';
 const ClientList = React.createClass({
 	render(){
 		return(
 				<div>
-				<table>
+				<table className="Table">
 					<tbody>
 					<tr>
 						<th>id</th>
-						<th>Прізвище</th>
-						<th>{name}</th>
-						<th>Побатькові</th>
-						<th>Рахунок</th>
-						<th>МФО</th>
-						<th>Адреса</th>
+						<th>Lastname</th>
+						<th>Name</th>
+						<th>Pob</th>
+						<th>Rasch_sch</th>
+						<th>Mfo</th>
+						<th>Address</th>
 					</tr>
+					</tbody>
+					<tbody>
 					{
 						this.props.clients.map(client =>
 						
 				  			<Client
 				  				key={client.id}
 				  				id={client.id}
-				  				prizv={client.prizv}
-								imja={client.imja}
+				  				lastName={client.lastName}
+								name={client.name}
 								pob={client.pob}
 								rasch_sch={client.rasch_sch}
 								mfo={client.mfo}
 								address={client.address}
+								onDelete={this.props.onClientDelete.bind(null,client)}
+				  				onEdit={this.props.onEditChange.bind(null, client)}
 				  			>
 							</Client>	
 						)

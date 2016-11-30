@@ -1,18 +1,21 @@
 import React from 'react';
 import Product from './Product.jsx';
+import '../List.less';
 
 const ProductList = React.createClass({
 	render(){
 		return(
 				<div>
-				<table>
-					<tbody>
+				<table className="Table">
+				<tbody>
 					<tr>
-						<th>id</th>
+						<th>Id</th>
 						<th>Name</th>
-						<th>Npreisk</th>
+						<th>№preisk</th>
 						<th>Cost</th>
 					</tr>
+				</tbody>
+				<tbody>
 					{
 						this.props.products.map(product =>
 						
@@ -27,8 +30,8 @@ const ProductList = React.createClass({
 				  			>
 							</Product>	
 						)
-					}
-					</tbody>
+					}	
+				</tbody>
 				</table>
 			</div>
 			);

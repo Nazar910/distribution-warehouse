@@ -1,6 +1,6 @@
 input{
 	margin-top: 10px;
-	font-size: 16pt;
+	font-size: 14pt;
 }
 button{
 	margin-left:10px;
@@ -11,10 +11,38 @@ button{
 	color:#DBE9F4;
 	border-radius: 5px;
 	border: none;
+	margin-top: 50%;
 }
 select{
 	font-size: 16pt;
 }
 .Date{
 	font-size:14pt;
+}
+.Close{
+	cursor:pointer;
+	color: rgba(0,0,0,0.6);
+	float:right;
+	margin-top:-10px;
+	&:hover{
+		color:red;
+	}
+}
+.New{
+	cursor:pointer;
+	color: rgba(0,0,0,0.6);
+	text-decoration: underline;
+	font-size:14pt;
+	margin-right: 10px;
+}
+.Info{
+	float:left;
+	& .Labels{
+		font-size: 14pt;
+		padding-bottom: 17px;
+		padding-right: 10px;
+		&:nth-child(1){
+			padding-top: 10px;
+		} 
+	}
 }

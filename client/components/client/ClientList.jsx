@@ -9,13 +9,13 @@ const ClientList = React.createClass({
 				<table className="Table">
 					<tbody>
 					<tr>
-						<th>id</th>
-						<th>Lastname</th>
-						<th>Name</th>
-						<th>Pob</th>
-						<th>Rasch_sch</th>
-						<th>Mfo</th>
-						<th>Address</th>
+						<th>{this.props.labels.id}</th>
+						<th>{this.props.labels.lastName}</th>
+						<th>{this.props.labels.name}</th>
+						<th>{this.props.labels.pob}</th>
+						<th>{this.props.labels.rasch_sch}</th>
+						<th>{this.props.labels.mfo}</th>
+						<th>{this.props.labels.address}</th>
 					</tr>
 					</tbody>
 					<tbody>

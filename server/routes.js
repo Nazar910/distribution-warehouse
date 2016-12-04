@@ -1,6 +1,7 @@
 import * as db from './dataBaseUtils.js';
 
 const Routes = [
+	{ path:'/', 		 method:'GET', 	handler: (request,reply)=>{ reply.view('index.html') } },
 	{ path:'/ttns', 		 method:'GET', 	handler: (request,reply)=>{ db.listTtns(reply); } },
 	{ path:'/products', 	 method:'GET', 	handler: (request,reply)=>{ db.listProducts(reply); } },
 	{ path:'/clients', 	 	 method:'GET', 	handler: (request,reply)=>{ db.listClients(reply); } },
@@ -24,7 +25,8 @@ const Routes = [
 	{ path:'/agreements/{id}', method:'POST',handler:(request,reply)=>{ db.updateAgreement(request.payload,reply); } },
 	{ path:'/ttns',      method:'POST', handler: (request,reply)=>{ db.createTtn(request.payload,reply); } },
 	{ path:'/ttns/{id}', method:'DELETE',handler:(request,reply)=>{ db.deleteTtn(request.params.id, reply); } },
-	{ path:'/ttns/{id}', method:'POST',handler:(request,reply)=>{ db.updateTtn(request.payload,reply); } }
+	{ path:'/ttns/{id}', method:'POST',handler:(request,reply)=>{ db.updateTtn(request.payload,reply); } },
+	{ path:'/authenticate', method:'POST',handler:(request,reply)=>{console.log(request.payload); db.authUser(request.payload,reply); } }
 
 ];
 

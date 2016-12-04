@@ -12,13 +12,18 @@ import { Router, Route, hashHistory } from 'react-router';
 import './App.less';
 
 const App = React.createClass({
+	getInitialState() {
+		return {
+			lang: 'ua'
+		}	
+	},
 	render(){
 		return(
 				<div className="App">
 					<Router history={hashHistory}>
 						<Route path='/login' component={LoginPage}/>
 						<Route path='/registration' component={RegistrationPage}/>
-						<Route path='/home' component={Navbar}>
+						<Route path='/' component={Navbar}>
 							<Route path='/product' component={ProductPage}/>
 							<Route path='/client' component={ClientPage}/>
 							<Route path='/agreement' component={AgreementPage}/>

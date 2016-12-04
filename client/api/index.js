@@ -73,5 +73,8 @@ export default{
 	},
 	updateTtn(data){
 		return axios.post(`${apiPrefix}/ttns/${data.id}`,data);
+	},
+	authUser(data){
+		return axios.post(`${apiPrefix}/authenticate`,data);
 	}
 }

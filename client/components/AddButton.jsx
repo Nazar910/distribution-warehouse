@@ -4,11 +4,14 @@ const AddButton = React.createClass({
 	componentDidMount() {
 		this.props.clear();
 	},
+	onButtonClick(){
+		this.props.handleAdd();
+		this.props.closeModal();
+	},
 	render(){
 		return(
 				<button
-					disabled={this.props.disabled}
-				    onClick={this.props.handleAdd}
+				    onClick={this.onButtonClick}
                 >
                         Add
                 </button>

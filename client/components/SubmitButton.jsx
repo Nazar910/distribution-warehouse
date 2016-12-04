@@ -1,12 +1,16 @@
 import React from 'react';
 
 const SubmitButton = React.createClass({
-	componentDidMount() {
+	componentWillMount() {
 		this.props.onEditChange();
+	},
+	onButtonClick(){
+		this.props.onSubmit();
+		this.props.closeModal();
 	},
 	render(){
 		return(
-				<button onClick={this.props.onSubmit}>
+				<button onClick={this.onButtonClick}>
 					Submit
 				</button>
 			);

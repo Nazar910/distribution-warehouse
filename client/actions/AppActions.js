@@ -343,6 +343,27 @@ const AppActions = {
             console.error(err)
         }
         );
+    },
+    loadUserToken(userData){
+        AppDispatcher.dispatch({
+            type: Constants.LOAD_USER_REQUEST
+        });
+        console.log('load user token');
+        api.authUser(userData)
+        .then(({data})=>{
+            console.log(data);
+            AppDispatcher.dispatch({
+                type: Constants.LOAD_USER_SUCCESS,
+                userToken: data
+            })
+        }
+        )
+        .catch(err =>
+            AppDispatcher.dispatch({
+                type:Constants.LOAD_USER_FAIL,
+                error: err
+            })
+        );
     }
 }
 export  default AppActions;

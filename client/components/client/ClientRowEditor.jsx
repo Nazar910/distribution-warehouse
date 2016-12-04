@@ -1,18 +1,32 @@
 import React from 'react';
+import Modal from 'react-modal';
 import SubmitButton from '../SubmitButton.jsx';
 import AddButton from '../AddButton.jsx';
 import '../Editor.less';
 
 function getState(){
 	return {
-			lastName: '',
-			name:'',
-			pob:'',
-			rasch_sch:1,
-			mfo:1,
-			address:''
-		}	
+		lastName: '',
+		name:'',
+		pob:'',
+		rasch_sch:1,
+		mfo:1,
+		address:''
+	}	
 }
+
+
+const customStyles = {
+  content : {
+    top        : '40%',
+    left       : '40%',
+    right      : 'auto',
+    bottom     : 'auto',
+    marginRight: '-50%',
+    transform  : 'translate(-40%, -40%)'
+  }
+};
+
 const ClientRowEditor = React.createClass({
 	getInitialState() {
 		return getState();
@@ -62,72 +76,99 @@ const ClientRowEditor = React.createClass({
 	},
 	handleInputs(){
 		this.setState({
-				lastName:this.props.client.lastName,
-				name:this.props.client.name,
-				pob:this.props.client.pob,
-				rasch_sch:this.props.client.rasch_sch,
-				mfo:this.props.client.mfo,
-				address:this.props.client.address
-			});
+			lastName:this.props.client.lastName,
+			name:this.props.client.name,
+			pob:this.props.client.pob,
+			rasch_sch:this.props.client.rasch_sch,
+			mfo:this.props.client.mfo,
+			address:this.props.client.address
+		});
 	},
 	clearInputs(){
-		this.setState(getState);
+		this.setState({ lastName: '',
+		name:'',
+		pob:'',
+		rasch_sch:1,
+		mfo:1,
+		address:'' });
 	},
 	render(){
 		return(
-				<div>
-					<input
-						type="text"
-						placeholder="Lastname"
-						value={this.state.lastName}
-						onChange={this.handleLastNameChange}
-					/>
-					<input
-						type="text"
-						placeholder="name"
-						value={this.state.name}
-						onChange={this.handleNameChange}
-					/>
-					<input
-						type="text"
-						placeholder="pob"
-						value={this.state.pob}
-						onChange={this.handlePobChange}
-					/>
-					<input
-						type="number"
-						placeholder="Rasch_sch"
-						value={this.state.rasch_sch}
-						min="1"
-						onChange={this.handleRaschSchChange}
-					/>
-					<input
-						type="number"
-						placeholder="mfo"
-						value={this.state.mfo}
-						min="1"
-						onChange={this.handleMfoChange}
-					/>
-					<input
-						type="address"
-						placeholder="address"
-						value={this.state.address}
-						onChange={this.handleAddressChange}
-					/>
-					{!this.props.shouldEdit ?
-					<AddButton 
-						disabled={!this.state.name}
-						handleAdd={this.handleClientAdd}
-						clear={this.clearInputs}
+			<div>
+			<Modal
+			isOpen={this.props.modalIsOpen}
+			onAfterOpen={this.props.afterOpen}
+			onRequestClose={this.props.closeModal}
+			contentLabel='Example '
+			style={customStyles}
+			>
+			<span className="Close" onClick={this.props.closeModal}> x </span>
+			<div className="Info">
+				<div className="Labels">{this.props.labels.lastName}</div>
+				<div className="Labels">{this.props.labels.name}</div>
+				<div className="Labels">{this.props.labels.pob}</div>
+				<div className="Labels">{this.props.labels.rasch_sch}</div>
+				<div className="Labels">{this.props.labels.mfo}</div>
+				<div className="Labels">{this.props.labels.address}</div>
+			</div>
+			<div className="Info">
+			<div><input
+			type="text"
+			placeholder={this.props.labels.lastName}
+			value={this.state.lastName}
+			onChange={this.handleLastNameChange}
+			/></div>
+			<div><input
+			type="text"
+			placeholder={this.props.labels.name}
+			value={this.state.name}
+			onChange={this.handleNameChange}
+			/></div>
+			<div><input
+			type="text"
+			placeholder={this.props.labels.pob}
+			value={this.state.pob}
+			onChange={this.handlePobChange}
+			/></div>
+			<div><input
+			type="number"
+			placeholder={this.props.labels.rasch_sch}
+			value={this.state.rasch_sch}
+			min="1"
+			onChange={this.handleRaschSchChange}
+			/></div>
+			<div><input
+			type="number"
+			placeholder={this.props.labels.mfo}
+			value={this.state.mfo}
+			min="1"
+			onChange={this.handleMfoChange}
+			/></div>
+			<div><input
+			type="address"
+			placeholder={this.props.labels.address}
+			value={this.state.address}
+			onChange={this.handleAddressChange}
+			/></div></div>
+			{!this.props.shouldEdit ?
+					<AddButton
+					handleAdd={this.handleClientAdd}
+					clear={this.clearInputs}
+					closeModal={this.props.closeModal}
 					/> :
-                    <SubmitButton 
-                     	onEditChange={this.handleInputs}
-                     	onSubmit={this.handleClientUpdate}
-                    />
-                    }
-                    <div>{this.props.error}</div>
+					<SubmitButton
+					onEditChange={this.handleInputs}
+					onSubmit={this.handleClientUpdate}
+					closeModal={this.props.closeModal}
+					/>
+			}
+			<div>{this.props.error}</div>
+			</Modal>
+				
+
+				
 				</div>
-			);
+				);
 	}
 });
 

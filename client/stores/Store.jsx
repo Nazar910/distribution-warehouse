@@ -12,6 +12,7 @@ let _containers = [];
 let _transportKinds = [];
 let _agreements = [];
 let _ttns = [];
+let _userToken = {};
 let _loadingError = null;
 let _isLoading = true;
 
@@ -73,6 +74,12 @@ function formatTtn(ttn){
         p4             :ttn.p4
     };
 }
+function formatUserToken(userToken){
+    return{
+        username: userToken.username,
+        rigths  : userToken.rights
+    }
+}
 
 const TaskStore = Object.assign({}, EventEmitter.prototype,{
 	isLoading(){
@@ -95,6 +102,9 @@ const TaskStore = Object.assign({}, EventEmitter.prototype,{
     },
     getTtns(){
         return _ttns;
+    },
+    getUserToken(){
+        return _userToken;
     },
 	emitChange: function(){
 		this.emit(CHANGE_EVENT);
@@ -240,6 +250,29 @@ AppDispatcher.register(function(action) {
         }
 
         case AppConstants.LOAD_TTN_FAIL: {
+            _loadingError = action.error;
+
+            TaskStore.emitChange();
+            break;
+        }
+
+        case AppConstants.LOAD_USER_REQUEST: {
+            _isLoading = true;
+
+            TaskStore.emitChange();
+            break;
+        }
+
+        case AppConstants.LOAD_USER_SUCCESS: {
+            _isLoading = false;
+            _userToken = action.userToken;//action.userToken.map( formatUserToken );
+            _loadingError = null;
+
+            TaskStore.emitChange();
+            break;
+        }
+
+        case AppConstants.LOAD_USER_FAIL: {
             _loadingError = action.error;
 
             TaskStore.emitChange();

@@ -18,5 +18,8 @@ export default keyMirror({
     LOAD_AGREEMENT_FAIL: null,
     LOAD_TTN_REQUEST: null,
     LOAD_TTN_SUCCESS: null,
-    LOAD_TTN_FAIL: null
+    LOAD_TTN_FAIL: null,
+    LOAD_USER_REQUEST: null,
+    LOAD_USER_SUCCESS: null,
+    LOAD_USER_FAIL: null
 });

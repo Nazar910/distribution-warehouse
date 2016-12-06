@@ -5,7 +5,6 @@ import ClientPage from './client/ClientPage.jsx';
 import AgreementPage from './agreement/AgreementPage.jsx';
 import ContainerPage from './container/ContainerPage.jsx';
 import TtnPage from './ttn/TtnPage.jsx';
-import TransportKindPage from './transport_kind/TransportKindPage.jsx';
 import LoginPage from './LoginPage.jsx';
 import RegistrationPage from './RegistrationPage.jsx';
 import { Router, Route, hashHistory } from 'react-router';

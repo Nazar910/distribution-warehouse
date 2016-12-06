@@ -5,7 +5,6 @@ const Container = React.createClass({
 	render(){
 		return(		
 					<tr className="Item">
-						<td>{this.props.id}</td>
 						<td>{this.props.name}</td>
 						<td>{this.props.factory}</td>
 						<td>{this.props.cost}</td>

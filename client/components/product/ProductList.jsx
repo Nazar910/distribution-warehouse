@@ -9,10 +9,9 @@ const ProductList = React.createClass({
 				<table className="Table">
 				<tbody>
 					<tr>
-						<th>Id</th>
-						<th>Name</th>
-						<th>№preisk</th>
-						<th>Cost</th>
+						<th>{this.props.labels.title}</th>
+						<th>{this.props.labels.Npreisk}</th>
+						<th>{this.props.labels.cost}</th>
 					</tr>
 				</tbody>
 				<tbody>
@@ -21,7 +20,6 @@ const ProductList = React.createClass({
 						
 				  			<Product
 				  				key={product.id}
-				  				id={product.id}
 				  				name={product.name}
 				  				Npreisk={product.Npreisk}
 				  				cost={product.cost}

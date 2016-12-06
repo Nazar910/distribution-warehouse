@@ -29,7 +29,6 @@ const App = React.createClass({
 							<Route path='/agreement' component={AgreementPage}/>
 							<Route path='/ttn' component={TtnPage}/>
 							<Route path='/container' component={ContainerPage}/>
-							<Route path='/transport_kind' component={TransportKindPage}/>
 						</Route>
 					</Router>
 				</div>

@@ -25,7 +25,6 @@ const Navbar = React.createClass({
 								<td><Link className="Link" to='/product'>{this.state.labels.product}</Link></td>
 								<td><Link className="Link" to='/client'>{this.state.labels.client}</Link></td>
 								<td><Link className="Link" to='/container'>{this.state.labels.container}</Link></td>
-								<td><Link className="Link" to='/transport_kind'>{this.state.labels.transport_kind}</Link></td>
 								<td>
 									<select onChange={this.onLangChange}>
 										<option>ua</option>

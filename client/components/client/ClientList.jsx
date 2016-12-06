@@ -9,7 +9,6 @@ const ClientList = React.createClass({
 				<table className="Table">
 					<tbody>
 					<tr>
-						<th>{this.props.labels.id}</th>
 						<th>{this.props.labels.lastName}</th>
 						<th>{this.props.labels.name}</th>
 						<th>{this.props.labels.pob}</th>
@@ -24,7 +23,6 @@ const ClientList = React.createClass({
 						
 				  			<Client
 				  				key={client.id}
-				  				id={client.id}
 				  				lastName={client.lastName}
 								name={client.name}
 								pob={client.pob}

@@ -2,13 +2,15 @@ import React from 'react';
 import SubmitButton from '../SubmitButton.jsx';
 import AddButton from '../AddButton.jsx';
 import '../Editor.less';
+import customStyles from '../ModalStyles.js';
+import Modal from 'react-modal';
 
 function getState(){
 	return {
-			name: '',
-			Npreisk: 1,
-			cost: 1
-		}	
+		name: '',
+		Npreisk: 1,
+		cost: 1
+	}	
 }
 const ProductRowEditor = React.createClass({
 	getInitialState() {
@@ -44,50 +46,64 @@ const ProductRowEditor = React.createClass({
 	},
 	handleInputs(){
 		this.setState({
-				name: this.props.product.name,
-				Npreisk: this.props.product.Npreisk,
-				cost: this.props.product.cost
-			});
+			name: this.props.product.name,
+			Npreisk: this.props.product.Npreisk,
+			cost: this.props.product.cost
+		});
 	},
 	clearInputs(){
 		this.setState(getState);
 	},
 	render(){
 		return(
-				<div>
-					<input
-						type="text"
-						placeholder="name"
-						value={this.state.name}
-						onChange={this.handleNameChange}
-					/>
-					<input
-						type="number"
-						placeholder="Npreisk"
-						value={this.state.Npreisk}
-						min="1"
-						onChange={this.handleNpreiskChange}
-					/>
-					<input
-						type="number"
-						placeholder="cost"
-						value={this.state.cost}
-						min="1"
-						onChange={this.handleCostChange}
-					/>
-					{!this.props.shouldEdit ?
-					<AddButton 
-						disabled={!this.state.name}
-						handleAdd={this.handleProductAdd}
-						clear={this.clearInputs}
-					/> :
-                    <SubmitButton 
-                     	onEditChange={this.handleInputs}
-                     	onSubmit={this.handleProductUpdate}
-                    />
-                    }
-                    <div>{this.props.error}</div>
-				</div>
+			<div> 
+			<Modal
+			isOpen={this.props.modalIsOpen}
+			onAfterOpen={this.props.afterOpen}
+			onRequestClose={this.props.closeModal}
+			style={customStyles}
+			>
+			<span className="Close" onClick={this.props.closeModal}> x </span>
+			<div className="Info">
+			<div className="Labels">{this.props.labels.title}</div>
+			<div className="Labels">{this.props.labels.Npreisk}</div>
+			<div className="Labels">{this.props.labels.cost}</div>
+			</div>
+			<div className="Info">
+			<div><input
+			type="text"
+			placeholder={this.props.labels.title}
+			value={this.state.name}
+			onChange={this.handleNameChange}
+			/></div>
+			<div><input
+			type="text"
+			placeholder={this.props.labels.Npreisk}
+			value={this.state.Npreisk}
+			onChange={this.handleNpreiskChange}
+			/></div>
+			<div><input
+			type="number"
+			placeholder={this.props.labels.cost}
+			value={this.state.cost}
+			min="1"
+			onChange={this.handleCostChange}
+			/></div></div>
+			{!this.props.shouldEdit ?
+				<AddButton
+				handleAdd={this.handleProductAdd}
+				clear={this.clearInputs}
+				closeModal={this.props.closeModal}
+				/> :
+				<SubmitButton
+				onEditChange={this.handleInputs}
+				onSubmit={this.handleProductUpdate}
+				closeModal={this.props.closeModal}
+				/>
+			}
+			<div>{this.props.error}</div>
+			</Modal>       
+			</div>
 			);
 	}
 });

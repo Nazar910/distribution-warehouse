@@ -2,12 +2,14 @@ import React from 'react';
 import SubmitButton from '../SubmitButton.jsx';
 import AddButton from '../AddButton.jsx';
 import '../Editor.less';
+import customStyles from '../ModalStyles.js';
+import Modal from 'react-modal';
 
 function getState(){
 	return {
 			name:'',
 			factory:'',
-			cost:0
+			cost:1
 		}	
 }
 const ContainerRowEditor = React.createClass({
@@ -54,39 +56,54 @@ const ContainerRowEditor = React.createClass({
 	},
 	render(){
 		return(
-				<div>
-					<input
-						type="text"
-						placeholder="name"
-						value={this.state.name}
-						onChange={this.handleNameChange}
-					/>
-					<input
-						type="text"
-						placeholder="factory"
-						value={this.state.factory}
-						onChange={this.handleFactoryChange}
-					/>
-					<input
-						type="number"
-						placeholder="cost"
-						value={this.state.cost}
-						min="1"
-						onChange={this.handleCostChange}
-					/>
-					{!this.props.shouldEdit ?
-					<AddButton 
-						disabled={!this.state.name}
-						handleAdd={this.handleContainerAdd}
-						clear={this.clearInputs}
-					/> :
-                    <SubmitButton 
-                     	onEditChange={this.handleInputs}
-                     	onSubmit={this.handleContainerUpdate}
-                    />
-                    }
-                    <div>{this.props.error}</div>
-				</div>
+				<div> 
+  <Modal
+  isOpen={this.props.modalIsOpen}
+  onAfterOpen={this.props.afterOpen}
+  onRequestClose={this.props.closeModal}
+  style={customStyles}
+  >
+  <span className="Close" onClick={this.props.closeModal}> x </span>
+  <div className="Info">
+    <div className="Labels">{this.props.labels.title}</div>
+    <div className="Labels">{this.props.labels.factory}</div>
+    <div className="Labels">{this.props.labels.cost}</div>
+  </div>
+  <div className="Info">
+      <div><input
+        type="text"
+        placeholder={this.props.labels.title}
+        value={this.state.name}
+        onChange={this.handleNameChange}
+        /></div>
+        <div><input
+          type="text"
+          placeholder={this.props.labels.factory}
+          value={this.state.factory}
+          onChange={this.handleFactoryChange}
+          /></div>
+          <div><input
+            type="number"
+            placeholder={this.props.labels.cost}
+            value={this.state.cost}
+            min="1"
+            onChange={this.handleCostChange}
+            /></div></div>
+                {!this.props.shouldEdit ?
+                <AddButton
+                handleAdd={this.handleContainerAdd}
+                clear={this.clearInputs}
+                closeModal={this.props.closeModal}
+                /> :
+                <SubmitButton
+                onEditChange={this.handleInputs}
+                onSubmit={this.handleContainerUpdate}
+                closeModal={this.props.closeModal}
+                />
+              }
+              <div>{this.props.error}</div>
+            </Modal>       
+          </div>
 			);
 	}
 });

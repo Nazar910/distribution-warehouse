@@ -5,7 +5,6 @@ const Client = React.createClass({
 	render(){
 		return(		
 					<tr className="Item">
-						<td>{this.props.id}</td>
 						<td>{this.props.lastName}</td>
 						<td>{this.props.name}</td>
 						<td>{this.props.pob}</td>

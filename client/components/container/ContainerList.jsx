@@ -9,10 +9,9 @@ const ContainerList = React.createClass({
 				<table className="Table">
 					<tbody>
 					<tr>
-						<th>id</th>
-						<th>Name</th>
-						<th>Factory</th>
-						<th>Cost</th>
+						<th>{this.props.labels.title}</th>
+						<th>{this.props.labels.factory}</th>
+						<th>{this.props.labels.cost}</th>
 					</tr>
 					</tbody>
 					<tbody>
@@ -21,7 +20,6 @@ const ContainerList = React.createClass({
 						
 				  			<Container
 				  				key={container.id}
-				  				id={container.id}
 								name={container.name}
 								factory={container.factory}
 								cost={container.cost}

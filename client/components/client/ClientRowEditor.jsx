@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import SubmitButton from '../SubmitButton.jsx';
 import AddButton from '../AddButton.jsx';
 import '../Editor.less';
+import customStyles from '../ModalStyles.js';
 
 function getState(){
 	return {
@@ -14,18 +15,6 @@ function getState(){
 		address:''
 	}	
 }
-
-
-const customStyles = {
-  content : {
-    top        : '40%',
-    left       : '40%',
-    right      : 'auto',
-    bottom     : 'auto',
-    marginRight: '-50%',
-    transform  : 'translate(-40%, -40%)'
-  }
-};
 
 const ClientRowEditor = React.createClass({
 	getInitialState() {
@@ -86,15 +75,15 @@ const ClientRowEditor = React.createClass({
 	},
 	clearInputs(){
 		this.setState({ lastName: '',
-		name:'',
-		pob:'',
-		rasch_sch:1,
-		mfo:1,
-		address:'' });
+			name:'',
+			pob:'',
+			rasch_sch:1,
+			mfo:1,
+			address:'' });
 	},
 	render(){
 		return(
-			<div>
+			<div> 
 			<Modal
 			isOpen={this.props.modalIsOpen}
 			onAfterOpen={this.props.afterOpen}
@@ -104,12 +93,12 @@ const ClientRowEditor = React.createClass({
 			>
 			<span className="Close" onClick={this.props.closeModal}> x </span>
 			<div className="Info">
-				<div className="Labels">{this.props.labels.lastName}</div>
-				<div className="Labels">{this.props.labels.name}</div>
-				<div className="Labels">{this.props.labels.pob}</div>
-				<div className="Labels">{this.props.labels.rasch_sch}</div>
-				<div className="Labels">{this.props.labels.mfo}</div>
-				<div className="Labels">{this.props.labels.address}</div>
+			<div className="Labels">{this.props.labels.lastName}</div>
+			<div className="Labels">{this.props.labels.name}</div>
+			<div className="Labels">{this.props.labels.pob}</div>
+			<div className="Labels">{this.props.labels.rasch_sch}</div>
+			<div className="Labels">{this.props.labels.mfo}</div>
+			<div className="Labels">{this.props.labels.address}</div>
 			</div>
 			<div className="Info">
 			<div><input
@@ -151,24 +140,21 @@ const ClientRowEditor = React.createClass({
 			onChange={this.handleAddressChange}
 			/></div></div>
 			{!this.props.shouldEdit ?
-					<AddButton
-					handleAdd={this.handleClientAdd}
-					clear={this.clearInputs}
-					closeModal={this.props.closeModal}
-					/> :
-					<SubmitButton
-					onEditChange={this.handleInputs}
-					onSubmit={this.handleClientUpdate}
-					closeModal={this.props.closeModal}
-					/>
+				<AddButton
+				handleAdd={this.handleClientAdd}
+				clear={this.clearInputs}
+				closeModal={this.props.closeModal}
+				/> :
+				<SubmitButton
+				onEditChange={this.handleInputs}
+				onSubmit={this.handleClientUpdate}
+				closeModal={this.props.closeModal}
+				/>
 			}
 			<div>{this.props.error}</div>
-			</Modal>
-				
-
-				
-				</div>
-				);
+			</Modal>       
+			</div>
+			);
 	}
 });
 

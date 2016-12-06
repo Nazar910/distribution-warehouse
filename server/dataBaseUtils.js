@@ -75,22 +75,22 @@ export function listTtns(reply){
 }
 
 export function listProducts(reply){
-	selectRow('select * from product',reply);
+	selectRow('select * from product order by name',reply);
 }
 
 export function listClients(reply){
-	selectRow('select * from client',reply);
+	selectRow('select * from client order by lastName',reply);
 }
 
 export function listContainers(reply){
-	selectRow('select * from container',reply);
+	selectRow('select * from container order by name',reply);
 }
 
 export function listAgreements(reply){
 	selectRow('select id,client_id,creation_date,summary from agreement',reply);
 }
 export function listTransportKinds(reply){
-	selectRow('select * from transport_kind',reply);
+	selectRow('select * from transport_kind order by name',reply);
 }
 
 export function createProduct(data,reply){

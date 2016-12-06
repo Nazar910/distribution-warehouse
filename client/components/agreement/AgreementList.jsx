@@ -18,10 +18,10 @@ const AgreementList = React.createClass({
 				<table className="Table">
 					<tbody>
 					<tr>
-						<th>id</th>
-						<th>Name</th>
-						<th>Date</th>
-						<th>Summary</th>
+						<th>{this.props.labels.id}</th>
+						<th>{this.props.labels.client}</th>
+						<th>{this.props.labels.creationDate}</th>
+						<th>{this.props.labels.summ}</th>
 					</tr>
 					</tbody>
 					<tbody>

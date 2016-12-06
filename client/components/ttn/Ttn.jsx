@@ -8,7 +8,6 @@ const Ttn = React.createClass({
 	render(){
 		return(		
 					<tr className="Item">
-						<td>{this.props.id}</td>
 						<td>{this.props.agreement}</td>
 						<td>{this.props.product}</td>
 						<td>{this.props.container}</td>

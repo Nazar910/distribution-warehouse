@@ -54,6 +54,7 @@ const TtnList = React.createClass({
 						
 				  			<Ttn
 				  				key={ttn.id}
+				  				id={ttn.id}
 								agreement={ttn.agreement_id}
 								product={this.formatProduct(ttn.product_id)}
 								container={this.formatContainer(ttn.container_id)}
@@ -68,6 +69,7 @@ const TtnList = React.createClass({
 								titleP4={this.props.formatTransportP(ttn.transport_kind,2)}
 								onDelete={this.props.onTtnDelete.bind(null,ttn)}
 				  				onEdit={this.props.onEditChange.bind(null, ttn)}
+				  				labels={this.props.labels}
 				  			>
 							</Ttn>	
 						)

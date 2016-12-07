@@ -43,7 +43,9 @@ const Lang = {
 		clientId:'Замовник',
 		creationDate:'Дата заключення',
 		summ:'Сума',
-		searchClientId:'Пошук за замовником'
+		searchClientId:'Пошук за замовником',
+		print:'Друк',
+		edit:'Редаг.'
 	},
 	en:{
 		id: 'id',
@@ -89,7 +91,9 @@ const Lang = {
 		clientId:'Client',
 		creationDate:'Date of creation',
 		summ:'Summary',
-		searchClientId:'Search for client'
+		searchClientId:'Search for client',
+		print:'Print',
+		edit:'Edit'
 	},
 	ru:{
 		id: '№',
@@ -135,7 +139,9 @@ const Lang = {
 		clientId:'Заказчик',
 		creationDate:'Дата заключения',
 		summ:'Сумма',
-		searchClientId:'Поиск по заказчику'
+		searchClientId:'Поиск по заказчику',
+		print:'Печать',
+		edit:'Изм.'
 		}
 };
 export default Lang; 

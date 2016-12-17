@@ -94,6 +94,7 @@ const TtnRowEditor = React.createClass({
 			container_id   :this.props.ttn.container_id,
 			container_count:this.props.ttn.container_count,
 			transport_kind :this.props.ttn.transport_kind,
+			transport_summ :this.props.ttn.transport_summ,
 			p2             :this.props.ttn.p2,
 			p3             :this.props.ttn.p3,
 			p4             :this.props.ttn.p4
@@ -279,10 +280,14 @@ const TtnRowEditor = React.createClass({
 				<AddButton 
 				handleAdd={this.handleTtnAdd}
 				clear={this.clearInputs}
+				labels={this.props.labels}
+				closeModal={this.props.closeModal}
 				/> :
 				<SubmitButton 
 				onEditChange={this.handleInputs}
 				onSubmit={this.handleTtnUpdate}
+				labels={this.props.labels}
+				closeModal={this.props.closeModal}
 				/>
 			}
 			<div>{this.props.error}</div>

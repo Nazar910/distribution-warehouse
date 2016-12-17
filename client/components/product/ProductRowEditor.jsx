@@ -94,11 +94,13 @@ const ProductRowEditor = React.createClass({
 				handleAdd={this.handleProductAdd}
 				clear={this.clearInputs}
 				closeModal={this.props.closeModal}
+				labels={this.props.labels}
 				/> :
 				<SubmitButton
 				onEditChange={this.handleInputs}
 				onSubmit={this.handleProductUpdate}
 				closeModal={this.props.closeModal}
+				labels={this.props.labels}
 				/>
 			}
 			<div>{this.props.error}</div>

@@ -13,7 +13,7 @@ const Lang = {
 		product: 'Товар',
 		container: 'Контейнер',
 		transportKind: 'Вид транспорту',
-		button_submit: 'Підтвердити',
+		button_submit: 'Підтв.',
 		button_add:'Додати',
 		searchLastName: 'Пошук за прізвищем',
 		deepSearch:'Розширений пошук',
@@ -45,7 +45,9 @@ const Lang = {
 		summ:'Сума',
 		searchClientId:'Пошук за замовником',
 		print:'Друк',
-		edit:'Редаг.'
+		edit:'Редаг.',
+		signUp:'Зареєстр.',
+		logOut:'Вийти'
 	},
 	en:{
 		id: 'id',
@@ -93,7 +95,9 @@ const Lang = {
 		summ:'Summary',
 		searchClientId:'Search for client',
 		print:'Print',
-		edit:'Edit'
+		edit:'Edit',
+		signUp:'Sign in',
+		logOut:'Log out'
 	},
 	ru:{
 		id: '№',
@@ -141,7 +145,9 @@ const Lang = {
 		summ:'Сумма',
 		searchClientId:'Поиск по заказчику',
 		print:'Печать',
-		edit:'Изм.'
+		edit:'Изм.',
+		signUp:'Зарегистр.',
+		logOut:'Выйти'
 		}
 };
 export default Lang; 

@@ -9,7 +9,7 @@ const Product = React.createClass({
 						<td>{this.props.name}</td>
 						<td>{this.props.Npreisk}</td>
 						<td>{this.props.cost}</td>
-						<td><span className='Item__del-edit' onClick={this.props.onEdit}>Edit</span></td>
+						<td><span className='Item__del-edit' onClick={this.props.onEdit}>{this.props.labels.edit}</span></td>
 						<td><span className='Item__del-edit' onClick={this.props.onDelete}> x </span></td>
 					</tr>
 

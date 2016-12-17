@@ -10,6 +10,12 @@ const Navbar = React.createClass({
 			lang: 'ua'
 		}	
 	},
+	componentWillMount() {
+		this.context.router.push('ttn');
+	},
+	componentDidMount() {
+
+	},
 	onLangChange(event){
 		var l = event.target.value;
 		this.setState({ labels: Lang[l], lang: l });
@@ -43,5 +49,8 @@ const Navbar = React.createClass({
 			);
 	}
 });
+Navbar.contextTypes = {
+	router: React.PropTypes.object
+}
 
 export default Navbar;

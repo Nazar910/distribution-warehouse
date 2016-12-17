@@ -9,7 +9,7 @@ const Agreement = React.createClass({
 						<td>{this.props.client}</td>
 						<td>{this.props.creationDate}</td>
 						<td>{this.props.summary}</td>
-						<td><span className='Item__del-edit' onClick={this.props.onEdit}>Edit</span></td>
+						<td><span className='Item__del-edit' onClick={this.props.onEdit}>{this.props.labels.edit}</span></td>
 						<td><span className='Item__del-edit' onClick={this.props.onDelete}> x </span></td>
 					</tr>
 			);

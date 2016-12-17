@@ -9,6 +9,7 @@
     "host":"127.0.0.1",
     "port": 3306,
     "debug": false,
-    "connectionLimit":100
+    "connectionLimit":100,
+    "dateStrings":"date"
   }
 }

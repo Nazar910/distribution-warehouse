@@ -171,13 +171,11 @@ const TtnPage = React.createClass({
 		this.setState({ modalIsOpen: false, edit: false });
 	},
 	afterOpen(){
-		console.log('modal is opened');
 	},
 	handleSearchChange(event){
 		this.setState({ searchKind: event.target.value });
 	},
 	handleSortChange(){
-		console.log(this.state.sortVector);
 		let field;
 		switch(this.refs.sortBy.value){
 			case this.props.labels.agreement:{
@@ -212,6 +210,34 @@ const TtnPage = React.createClass({
 			this.handleSortChange();
 			clearInterval(interval);
 		},50);
+	},
+	printTtns(){
+		var mywindow = window.open('','printDiv','height=600,width=1000,top=0,left=0');
+		let trs = '';
+		let products = this.state.products,
+		transportKinds = this.state.transportKinds,
+		containers = this.state.containers;
+		this.state.ttnsQuery.forEach(function(item,i,arr){
+			trs+=`<tr>`+
+			`<td>${item.id}</td>`+
+			`<td>${item.agreement_id}</td>`+
+			`<td>${formatProduct(item.product_id,products)}</td>`+
+			`<td>${formatContainer(item.container_id,containers)}</td>`+
+			`<td>${item.container_count}</td>`+
+			`<td>${formatTransport(item.transport_kind,transportKinds)}</td>`+
+			`<td>${item.transport_summ}</td>`+
+			`<td>${item.p2}</td>`+
+			`<td>${item.p3!=null?item.p3:''}</td>`+
+			`<td>${item.p4!=null?item.p4:''}</td>`+
+			`</tr>`
+		});
+		let table=`<table border="1"><tr align="center"><th>${this.props.labels.id}</th><th>${this.props.labels.agreement}</th>`+
+		`<th>${this.props.labels.client}</th><th>${this.props.labels.container}</th>`+
+		`<th>${this.props.labels.containerCount}</th><th>${this.props.labels.transportKind}</th>`+
+		`<th>${this.props.labels.transportSumm}</th><th>${this.props.labels.p2}</th><th>${this.props.labels.p3}</th><th>${this.props.labels.p4}</th></tr>`+
+		`${trs}</table>`;
+		mywindow.document.write(`<html><head><title></title></head><body>${table}</body></html>`);
+		mywindow.print();
 	},
 	render(){
 		return(
@@ -395,6 +421,7 @@ const TtnPage = React.createClass({
 				</select>
 
 			}
+			<div><span className='Item__print' onClick={this.printTtns}>{this.props.labels.print}</span></div>
 			</div>
 			<div className="Sort">
 			<span>{this.props.labels.sortBy}&nbsp;</span>
@@ -433,5 +460,31 @@ _onChange() {
 }
 });
 
-
+function formatProduct(productId,products){
+	var result;
+	products.forEach(function (item,i, arr){
+		if(item.id === productId){
+			result = item.name;
+		}
+	});
+	return result;
+}
+function formatContainer(containerId,containers){
+	var result;
+	containers.forEach(function (item,i, arr){
+		if(item.id === containerId){
+			result = item.name;
+		}
+	});
+	return result;
+}
+function formatTransport(transportId,transportKinds){
+	var result;
+	transportKinds.forEach(function (item,i, arr){
+		if(item.id === transportId){
+			result = item.name;
+		}
+	});
+	return result;
+}
 export default TtnPage;

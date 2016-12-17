@@ -13,7 +13,7 @@ const AddButton = React.createClass({
 				<button
 				    onClick={this.onButtonClick}
                 >
-                        Add
+                        {this.props.labels.button_add}
                 </button>
 			);
 	}

@@ -11,7 +11,7 @@ const SubmitButton = React.createClass({
 	render(){
 		return(
 				<button onClick={this.onButtonClick}>
-					Submit
+					{this.props.labels.button_submit}
 				</button>
 			);
 	}

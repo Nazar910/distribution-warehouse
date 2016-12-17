@@ -77,7 +77,7 @@ const AgreementRowEditor = React.createClass({
 			<div className="Labels">{this.props.labels.summ}</div>
 			</div>
 			<div className="Info">
-			<div><select value={this.state.client}>
+			<div><select value={this.state.client} onChange={this.handleClientChange}>
 			{
 				this.props.clients.map(client=>
 					<option key={client.id}>
@@ -90,7 +90,7 @@ const AgreementRowEditor = React.createClass({
 			type="date"
 			placeholder={this.props.labels.creationDate}
 			value={this.state.creationDate}
-			onChange={this.handlePobChange}
+			onChange={this.handleCreationDateChange}
 			/></div>
 			<div><input
 			type="number"
@@ -103,10 +103,14 @@ const AgreementRowEditor = React.createClass({
 				<AddButton 
 				handleAdd={this.handleAgreementAdd}
 				clear={this.clearInputs}
+				labels={this.props.labels}
+				closeModal={this.props.closeModal}
 				/> :
 				<SubmitButton 
 				onEditChange={this.handleInputs}
 				onSubmit={this.handleAgreementUpdate}
+				labels={this.props.labels}
+				closeModal={this.props.closeModal}
 				/>
 			}
 			<div>{this.props.error}</div>
@@ -119,6 +123,6 @@ const AgreementRowEditor = React.createClass({
 
 export default AgreementRowEditor;
 function reformatDate(date){
-	let d = date.split('T')[0];
+	let d = date.split(' ')[0];
 	return d;
 }

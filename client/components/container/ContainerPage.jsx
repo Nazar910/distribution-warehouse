@@ -139,6 +139,23 @@ handleSortVectorChange(){
   }
   ,50);
 },
+printContainers(){
+    var mywindow = window.open('','printDiv','height=600,width=1000,top=0,left=0');
+    let trs = '';
+    this.state.containersQuery.forEach(function(item,i,arr){
+      trs+=`<tr>`+
+        `<td>${item.id}</td>`+
+        `<td>${item.name}</td>`+
+        `<td>${item.factory}</td>`+
+        `<td>${item.cost}</td>`+
+      `</tr>`
+    });
+    console.log(trs);
+    let table=`<table border="1"><tr align="center"><th>${this.props.labels.id}</th><th>${this.props.labels.name}</th>`+
+    `<th>${this.props.labels.factory}</th><th>${this.props.labels.cost}</th>`+`${trs}</table>`;
+    mywindow.document.write(`<html><head><title></title></head><body>${table}</body></html>`);
+    mywindow.print();
+},
 render(){
   return(
     <div>
@@ -201,6 +218,7 @@ render(){
      />
 
    }
+   <div><span className='Item__print' onClick={this.printContainers}>{this.props.labels.print}</span></div>
    </div>
    <div className="Sort">
    <span>{this.props.labels.sortBy}&nbsp;</span>

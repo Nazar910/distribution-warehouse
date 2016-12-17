@@ -94,11 +94,13 @@ const ContainerRowEditor = React.createClass({
                 handleAdd={this.handleContainerAdd}
                 clear={this.clearInputs}
                 closeModal={this.props.closeModal}
+                labels={this.props.labels}
                 /> :
                 <SubmitButton
                 onEditChange={this.handleInputs}
                 onSubmit={this.handleContainerUpdate}
                 closeModal={this.props.closeModal}
+                labels={this.props.labels}
                 />
               }
               <div>{this.props.error}</div>

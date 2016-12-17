@@ -11,7 +11,7 @@ const Client = React.createClass({
 						<td>{this.props.rasch_sch}</td>
 						<td>{this.props.mfo}</td>
 						<td>{this.props.address}</td>
-						<td><span className='Item__del-edit' onClick={this.props.onEdit}>Edit</span></td>
+						<td><span className='Item__del-edit' onClick={this.props.onEdit}>{this.props.labels.edit}</span></td>
 						<td><span className='Item__del-edit' onClick={this.props.onDelete}> x </span></td>
 					</tr>
 			);

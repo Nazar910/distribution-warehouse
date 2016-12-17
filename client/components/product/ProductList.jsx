@@ -25,6 +25,7 @@ const ProductList = React.createClass({
 				  				cost={product.cost}
 				  				onDelete={this.props.onProductDelete.bind(null,product)}
 				  				onEdit={this.props.onEditChange.bind(null, product)}
+				  				labels={this.props.labels}
 				  			>
 							</Product>	
 						)

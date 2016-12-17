@@ -144,11 +144,13 @@ const ClientRowEditor = React.createClass({
 				handleAdd={this.handleClientAdd}
 				clear={this.clearInputs}
 				closeModal={this.props.closeModal}
+				labels={this.props.labels}
 				/> :
 				<SubmitButton
 				onEditChange={this.handleInputs}
 				onSubmit={this.handleClientUpdate}
 				closeModal={this.props.closeModal}
+				labels={this.props.labels}
 				/>
 			}
 			<div>{this.props.error}</div>

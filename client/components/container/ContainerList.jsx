@@ -25,6 +25,7 @@ const ContainerList = React.createClass({
 								cost={container.cost}
 								onDelete={this.props.onContainerDelete.bind(null,container)}
 				  				onEdit={this.props.onEditChange.bind(null, container)}
+				  				labels={this.props.labels}
 				  			>
 							</Container>	
 						)

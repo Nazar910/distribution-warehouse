@@ -8,7 +8,8 @@ var pool = MySql.createPool({
 		password: config.db.password,
 		database: config.db.name,
 		// debug   : config.db.debug,
-		connectionLimit: config.db.connectionLimit
+		// connectionLimit: config.db.connectionLimit
+		dateStrings:true
 });
 
 function selectRow(query,reply){
@@ -170,18 +171,6 @@ export function authUser(data,reply){
 		connection.query('select * from user where username=? and password=?',[data.username, data.password],(err,rows)=>{
 			connection.release();
 			if(!err){
-				console.log('dassd');
-				console.log(data);
-				console.log(rows);
-				// if(rows != null){
-				// 	var userToken = {
-				// 		username: rows[0].username,
-				// 		rights: rows[0].rights
-				// 	}
-				// 	console.log(userToken);
-				// 	reply(userToken);
-				// }
-				// else reply(404);
 				try{
 					var userToken = {
 						username: rows[0].username,
@@ -191,7 +180,7 @@ export function authUser(data,reply){
 					reply(userToken);
 				}
 				catch(err){
-					reply(404)
+					reply(404);
 				}
 			}
 			console.log(err);

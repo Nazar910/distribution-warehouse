@@ -20,8 +20,6 @@ const App = React.createClass({
 		return(
 				<div className="App">
 					<Router history={hashHistory}>
-						<Route path='/login' component={LoginPage}/>
-						<Route path='/registration' component={RegistrationPage}/>
 						<Route path='/' component={Navbar}>
 							<Route path='/product' component={ProductPage}/>
 							<Route path='/client' component={ClientPage}/>

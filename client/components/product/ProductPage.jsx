@@ -138,14 +138,31 @@ const ProductPage = React.createClass({
 			clearInterval(interval);
 		},50);
 	},
+	printProducts(){
+		var mywindow = window.open('','printDiv','height=600,width=1000,top=0,left=0');
+		let trs = '';
+		this.state.productsQuery.forEach(function(item,i,arr){
+			trs+=`<tr>`+
+				`<td>${item.id}</td>`+
+				`<td>${item.name}</td>`+
+				`<td>${item.Npreisk}</td>`+
+				`<td>${item.cost}</td>`+
+			`</tr>`
+		});
+		console.log(trs);
+		let table=`<table border="1"><tr align="center"><th>${this.props.labels.id}</th><th>${this.props.labels.name}</th>`+
+		`<th>${this.props.labels.Npreisk}</th><th>${this.props.labels.cost}</th>`+`${trs}</table>`;
+		mywindow.document.write(`<html><head><title></title></head><body>${table}</body></html>`);
+		mywindow.print();
+	},
 	render(){
 		return(
 			<div>
 			<ProductRowEditor 
-			onProductAdd={this.handleContainerAdd} 
+			onProductAdd={this.handleProductAdd} 
 			shouldEdit={this.state.edit}
-			container={this.state.container}
-			onProductUpdate={this.handleContainerUpdate}
+			product={this.state.product}
+			onProductUpdate={this.handleProductUpdate}
 			error={this.state.errors}
 			modalIsOpen={this.state.modalIsOpen}
 			openModal={this.openModal}
@@ -200,6 +217,7 @@ const ProductPage = React.createClass({
 				/>
 
 			}
+			<div><span className='Item__print' onClick={this.printProducts}>{this.props.labels.print}</span></div>
 			</div>
 			<div className="Sort">
 			<span>{this.props.labels.sortBy}&nbsp;</span>

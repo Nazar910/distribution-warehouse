@@ -37,7 +37,6 @@ const AgreementPage = React.createClass({
 		Store.removeChangeListener(this._onChange);
 	},
 	handleAgreementAdd(agreementData){
-		agreementData.creationDate = reformatDate(agreementData.creationDate);
 		AppActions.createAgreement(agreementData);
 		let interval = setInterval(()=>{
 			this.handleFilter();
@@ -60,7 +59,6 @@ const AgreementPage = React.createClass({
 	},
 	handleAgreementUpdate(agreementData){
 		console.log(agreementData);
-   		// agreementData.creationDate = reformatDate(agreementData.creationDate);
    		AppActions.updateAgreement(agreementData,this.errorStr);
    		if(!this.state.errors)
    			this.setState(getStateFromFlux());  		
@@ -155,6 +153,23 @@ const AgreementPage = React.createClass({
    		}
    		,50);
    	},
+      printAgreements(){
+      var mywindow = window.open('','printDiv','height=600,width=1000,top=0,left=0');
+      let trs = '';
+      let array = this.state.clients;
+      this.state.agreementsQuery.forEach(function(item,i,arr){
+         trs+=`<tr>`+
+            `<td>${item.id}</td>`+
+            `<td>${formatClient(item.client,array)}</td>`+
+            `<td>${formatDate(item.creationDate)}</td>`+
+            `<td>${item.summary}</td>`+
+         `</tr>`;
+      });
+      let table=`<table border="1"><tr align="center"><th>${this.props.labels.id}</th><th>${this.props.labels.client}</th>`+
+      `<th>${this.props.labels.creationDate}</th><th>${this.props.labels.summ}</th>${trs}</table>`;
+      mywindow.document.write(`<html><head><title></title></head><body>${table}</body></html>`);
+      mywindow.print();
+      },
    	render(){
    		return(
    			<div>
@@ -238,6 +253,7 @@ const AgreementPage = React.createClass({
    				}
    				</select>
    			}
+            <div><span className='Item__print' onClick={this.printAgreements}>{this.props.labels.print}</span></div>
    			</div>
    			<div className="Sort">
    			<span>{this.props.labels.sortBy}&nbsp;</span>
@@ -271,10 +287,18 @@ const AgreementPage = React.createClass({
    		});
    	}
    });
-function reformatDate(date){
-	let d = date.split('.');
-	return (d[2]+'-'+d[1]+'-'+d[0]);
+function formatDate(date){
+	let d = date.split(' ')[0];
+   d = d.split('-');
+   return d[2]+'.'+d[1]+'.'+d[0];
 }
-
-
+function formatClient(clientId,array){
+         var result;
+         array.forEach(function (item,i, arr){
+               if(item.id === clientId){
+                  result = item.lastName+' '+item.name;
+            }
+         });
+         return result;
+}
 export default AgreementPage;

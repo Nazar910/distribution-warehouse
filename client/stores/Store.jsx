@@ -77,7 +77,7 @@ function formatTtn(ttn){
 function formatUserToken(userToken){
     return{
         username: userToken.username,
-        rigths  : userToken.rights
+        rights  : userToken.rights
     }
 }
 
@@ -265,7 +265,9 @@ AppDispatcher.register(function(action) {
 
         case AppConstants.LOAD_USER_SUCCESS: {
             _isLoading = false;
-            _userToken = action.userToken;//action.userToken.map( formatUserToken );
+            console.log(_userToken);
+            _userToken = formatUserToken(action.userToken);//action.userToken.map( formatUserToken );//
+            console.log(_userToken);
             _loadingError = null;
 
             TaskStore.emitChange();

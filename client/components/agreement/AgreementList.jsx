@@ -36,6 +36,7 @@ const AgreementList = React.createClass({
 								summary={agreement.summary}
 								onDelete={this.props.onAgreementDelete.bind(null,agreement)}
 				  				onEdit={this.props.onEditChange.bind(null, agreement)}
+				  				labels={this.props.labels}
 				  			>
 							</Agreement>	
 						)
@@ -48,9 +49,9 @@ const AgreementList = React.createClass({
 });
 
 function formatDate(date){
-	let d = date.split('T')[0];
-	d = d.split('-');
-	return d[2]+'.'+d[1]+'.'+d[0];
+let d = date.split(' ')[0];
+   d = d.split('-');
+   return d[2]+'.'+d[1]+'.'+d[0];
 }
 
 export default AgreementList;

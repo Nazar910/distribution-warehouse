@@ -31,6 +31,7 @@ const ClientList = React.createClass({
 								address={client.address}
 								onDelete={this.props.onClientDelete.bind(null,client)}
 				  				onEdit={this.props.onEditChange.bind(null, client)}
+				  				labels={this.props.labels}
 				  			>
 							</Client>	
 						)
